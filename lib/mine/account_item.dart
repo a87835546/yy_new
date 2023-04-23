@@ -7,8 +7,10 @@ class AccountItem extends StatefulWidget{
   final String title;
   final String? subTitle;
   final Function click;
+  final bool? hasSwitch;
+  final bool? display;
 
-  const AccountItem({super.key, required this.title,this.subTitle,required this.click});
+  const AccountItem({super.key, required this.title,this.subTitle,this.hasSwitch,this.display,required this.click});
 
   @override
   State<StatefulWidget> createState() {
@@ -17,6 +19,12 @@ class AccountItem extends StatefulWidget{
 
 }
 class _AccountItemState extends State<AccountItem> {
+  bool flag = false;
+  @override
+  void initState() {
+
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -58,7 +66,16 @@ class _AccountItemState extends State<AccountItem> {
                       ),
                     ),
                   ),
-                  Icon(Icons.keyboard_arrow_right,size: 30,color: Colors.grey,weight: 1,)
+                 Visibility(visible: true,child:  widget.hasSwitch == true ? CupertinoSwitch(value: flag, onChanged: (val){
+                   setState(() {
+                     flag = !flag;
+                   });
+                 }) :
+                 Icon(
+                   Icons.arrow_forward_ios,
+                   size: 16,
+                   color: color_d4d4d4(),
+                 ))
                 ],
               ),
             ),

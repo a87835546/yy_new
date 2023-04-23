@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:yy_new/sign_up_in/sign_button.dart';
 import 'package:yy_new/sign_up_in/sign_logo_page.dart';
 import 'package:yy_new/sign_up_in/sign_up_input_widget.dart';
+
+import '../widgets/navi_back_item.dart';
+import '../widgets/navi_top_widget.dart';
 class SignModifyPasswordPage extends StatefulWidget {
   const SignModifyPasswordPage({Key? key}) : super(key: key);
 
@@ -36,94 +39,121 @@ class _SignModifyPasswordState extends State<SignModifyPasswordPage> {
   }
 
   Widget _buildPage(BuildContext context) {
-    return MediaQuery.removePadding(
+    return
+      MediaQuery.removePadding(
       context: context,
       removeBottom: true,
       child: Stack(
         children: [
+          NaviTop(),
           Padding(
-            padding: EdgeInsets.only(top: 140, left: 30,
-              right: 30,),
-            child:ListView(
-              shrinkWrap: true,
-              // physics: NeverScrollableScrollPhysics(),
-              children: [
-                Padding(
-                  padding:const EdgeInsets.only(top: 20),
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "Change Password",
-                      style: TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+              padding: const EdgeInsets.only(top: 60, left: 30,
+                right: 30,),
+              child:ListView(
+                shrinkWrap: true,
+                // physics: NeverScrollableScrollPhysics(),
+                children: [
+                  Padding(
+                    padding:const EdgeInsets.only(top: 20),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "Change Password",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding:const EdgeInsets.only(top: 5),
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "Please login to proceed",
-                      style:
-                      TextStyle(fontSize: 14, color: Color(0xff707070)),
+                  Padding(
+                    padding:const EdgeInsets.only(top: 5),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "Please login to proceed",
+                        style:
+                        TextStyle(fontSize: 14, color: Color(0xff707070)),
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
+                  Padding(
+                    padding: EdgeInsets.only(
                       top: 40,
+                    ),
+                    child: Container(
+                        child: SignUpInputWidget(
+                          topLabel: "Current Password",
+                          placeholder: 'Current Password',
+                          controller: passwordController,
+                          isPassword: true,
+                        )),
                   ),
-                  child: Container(
-                      child: SignUpInputWidget(
-                        topLabel: "Current Password",
-                        placeholder: 'Current Password',
-                        controller: passwordController,
-                        isPassword: true,
-                      )),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
+                  Padding(
+                    padding: EdgeInsets.only(
                       top: 20,
                       // left: (MediaQuery.of(context).size.width - 300) / 2,
                       // right: (MediaQuery.of(context).size.width - 300) / 2
+                    ),
+                    child: Container(
+                        width: 300,
+                        alignment: Alignment.centerLeft,
+                        child: SignUpInputWidget(
+                          isPassword: true,
+                          topLabel: "New Password",
+                          placeholder: 'Enter your new password',
+                          controller: newPasswordController,
+                        )),
                   ),
-                  child: Container(
-                      width: 300,
-                      alignment: Alignment.centerLeft,
-                      child: SignUpInputWidget(
-                        isPassword: true,
-                        topLabel: "New Password",
-                        placeholder: 'Enter your new password',
-                        controller: newPasswordController,
-                      )),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
+                  Padding(
+                    padding: EdgeInsets.only(
                       top: 20,
                       // left: (MediaQuery.of(context).size.width - 300) / 2,
                       // right: (MediaQuery.of(context).size.width - 300) / 2
+                    ),
+                    child: Container(
+                        width: 300,
+                        alignment: Alignment.centerLeft,
+                        child: SignUpInputWidget(
+                          isPassword: true,
+                          topLabel: "Confirm Password",
+                          placeholder: 'Enter your confirm password',
+                          controller: confirmPasswordController,
+                        )),
                   ),
-                  child: Container(
-                      width: 300,
-                      alignment: Alignment.centerLeft,
-                      child: SignUpInputWidget(
-                        isPassword: true,
-                        topLabel: "Confirm Password",
-                        placeholder: 'Enter your confirm password',
-                        controller: confirmPasswordController,
-                      )),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                SignButton(
-                    disable: true, title: "Change Password", click: () async {
+                  Container(
+                    padding: EdgeInsets.only(left: 10),
+                    alignment: Alignment.centerLeft,
+                    child: Column(children: [
+                    Container(
+                      child: const Text("Password Requirements"),
+                      height: 40,
+                      padding: EdgeInsets.only(top: 15),
+                    ),
+                    Container(
+                      height: 30,
+                      child: const Text("Password Requirements"),
+                    ),
+                    Container(
+                      height: 30,
+                      child: const Text("Password Requirements"),
+                    ),
+                    Container(
+                      height: 30,
+                      child: const Text("Password Requirements"),
+                    ),
+                  ],
+                  ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SignButton(
+                      disable: true, title: "Change Password", click: () async {
 
-                }),
-              ],
-            )
+                  }),
+                ],
+              )
           ),
+          // Positioned(child: NaviBackButton(),left: 20,top: 60,)
         ],
       ),
     );

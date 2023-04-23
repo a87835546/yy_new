@@ -13,6 +13,8 @@ import '../utils/app_singleton.dart';
 import '../utils/color.dart';
 import '../utils/constants.dart';
 import '../utils/http_manager.dart';
+import 'about_us_page.dart';
+import 'change_email_page.dart';
 import 'mine_list_item.dart';
 
 class AccountPage extends StatefulWidget {
@@ -66,7 +68,7 @@ class _AccountPageState extends State<AccountPage>
                     style: TextStyle(color: color_d4d4d4()),
                   ),
                 ),
-                AccountItem(title: "Biometrics Login",subTitle: '',click: (){
+                AccountItem(title: "Biometrics Login",hasSwitch: true,click: (){
                   log("click Biometrics Login");
                 },),
                 AccountItem(title: "Change Password",subTitle: '',click: (){
@@ -75,6 +77,11 @@ class _AccountPageState extends State<AccountPage>
                 },),
                 AccountItem(title: "Mobile Number",subTitle: '6309773674305',click: (){
                   log("click change password");
+                },),
+                AccountItem(title: "Change Email",subTitle: 'aa@aa.com',click: (){
+                  log("click change password");
+
+                  NavigatorUtil.push(context,  const ChangeEmail(email: "aa@aa.com",));
                 },),
                 Container(
                   padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
@@ -90,6 +97,9 @@ class _AccountPageState extends State<AccountPage>
                 },),
                 AccountItem(title: "About Us",subTitle: _version,click: (){
                   log("click change password");
+
+                  NavigatorUtil.push(context,  const AboutUsPage());
+
                 },),
                 AccountItem(title: "Delete Account",click: (){
                   log("click change password");

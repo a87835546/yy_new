@@ -21,7 +21,7 @@ class _MineListItemState extends State<MineListItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.greenAccent,
+      color: Colors.transparent,
       height: 60,
       padding: const EdgeInsets.only(left: 15, right: 15),
       child: Column(
@@ -48,6 +48,7 @@ class _MineListItemState extends State<MineListItem> {
                   child: widget.right ??
                       Container(
                         alignment: Alignment.centerRight,
+                        padding: const EdgeInsets.only(right: 5),
                         child: Text(
                           widget.subTitle??"",
                           style: TextStyle(
@@ -57,6 +58,11 @@ class _MineListItemState extends State<MineListItem> {
                         ),
                       ),
                 ),
+                Visibility(visible: true,child:  Icon(
+                  Icons.arrow_forward_ios,
+                  size: 16,
+                  color: color_d4d4d4(),
+                ),),
               ],
             ),
           ),
