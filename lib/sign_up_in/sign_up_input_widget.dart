@@ -99,10 +99,12 @@ class SignUpInputWidgetState extends State<SignUpInputWidget> {
         Visibility(
           visible: widget.isOtp ?? false,
           child: Positioned(
+            right: 10,
+            top: 10,
             child: GestureDetector(
               child: Container(
                 height: 30,
-                padding: EdgeInsets.only(left: 5, right: 5),
+                padding: const EdgeInsets.only(left: 5, right: 5),
                 alignment: Alignment.center,
                 // decoration: BoxDecoration(
                 //     color: mainColor(), borderRadius: BorderRadius.circular(5)),
@@ -118,8 +120,6 @@ class SignUpInputWidgetState extends State<SignUpInputWidget> {
                 }
               },
             ),
-            right: 10,
-            top: 10,
           ),
         )
       ],

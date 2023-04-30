@@ -71,9 +71,57 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - imgs/logo@2x.png
+    - imgs/default_avatar.png
+    - imgs/tab_home_unselect.png
+    - imgs/tab_game_unselect.png
+    - imgs/facebook@2x.png
+    - imgs/google@2x.png
+    - imgs/instagram@2x.png
+    - imgs/checkbox.png
+    - imgs/care@2x.png
+    - imgs/articles@2x.png
+    - imgs/tab-icon-home.png
+    - imgs/badge-soon.png
+    - imgs/badge-unverified.png
+    - imgs/badge-verified.png
+    - imgs/icon-hands-helping.png
+    - imgs/tab-icon-scan-disabled.png
+    - imgs/checkbox-checked.png
+    - imgs/onboarding-bg.png
+    - imgs/summary-bg.png
+    - imgs/onboarding-mascot.png
+    - imgs/what-is-resiklos.png
+    - imgs/importance-of-resiklos.png
+    - imgs/placeholder_avatar.png
+    - imgs/verification_bg_image.png
+    - imgs/verify_email_image.png
+    - imgs/verify_success_image.png
+    - imgs/verify_kyc_person.png
+    - imgs/verfiy_id.png
+    - imgs/verify_person.png
+    - imgs/verify_face_id.png
+    - imgs/img.png
+    - imgs/merchant_top_cover.png
+    - imgs/rp_bg.png
+    - imgs/camera.png
+    - imgs/wallet-header.png
+    - imgs/wallet/bnb_logo.svg
+    - imgs/wallet/tether_usdt_logo.svg
+    - imgs/svg/bnb.svg
+    - imgs/svg/usdt.svg
+    - imgs/svg/wallet_bg.svg
+    - imgs/svg/gem.svg
+    - imgs/svg/summary_bg.svg
+    - imgs/svg/verify_email.svg
+    - imgs/svg/wallet_header.svg
+    - imgs/svg/external_link.svg
+    - imgs/svg/vouchers_icon.svg
+    - imgs/svg/rp_icon.svg
+    - imgs/svg/affiliates_icon.svg
+    - imgs/svg/scan_icon.svg
+    - imgs/svg/transfer_icon.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

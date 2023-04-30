@@ -2,15 +2,25 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:yy_new/customer/add_customer_page.dart';
+import 'package:yy_new/sign_up_in/sign_up_input_widget.dart';
 
 import '../base_class/base_page.dart';
 import '../main.dart';
+import '../mine/account_page.dart';
+import '../mine/account_profile_page.dart';
+import '../mine/mine_top_widget.dart';
 import '../utils/app_singleton.dart';
 import '../utils/event_bus_util.dart';
 import '../utils/http_manager.dart';
+import '../utils/navigator_util.dart';
 import '../utils/toast.dart';
+import '../widgets/base_top_widget.dart';
+import 'customer_list_item.dart';
+import 'customer_top_widget.dart';
 
 
 class CustomerPage extends BaseStatefulWidget {
@@ -68,12 +78,23 @@ class _CustomerPageState extends BaseStatefulState<CustomerPage>
             child: Container(
               height: MediaQuery.of(context).size.height +
                   MediaQuery.of(context).padding.bottom,
+
               child: Column(
                 children: [
                   Container(
-                    height: 15,
+                    padding: EdgeInsets.only(left: 15,right: 15,top: MediaQuery.of(context).padding.top),
                     color: Colors.transparent,
+                    child:BaseTopWidget(title: 'CUSTOMERS',
+                      one:Container(child: Icon(Icons.favorite_border,size: 30,),),
+                      two:Container(child: Icon(Icons.add,size: 30,),),
+                      clickOne: (){NavigatorUtil.push(context, AccountProfilePage());},
+                      clickTwo: (){NavigatorUtil.push(context, AddCustomerPage());},),
+
                   ),
+                  const Padding(padding: EdgeInsets.only(left: 15,right: 15),child: CustomerTopWidget(),),
+                  SignUpInputWidget(placeholder: 'placeholder', topLabel: 'topLabel',inputValue: (val){
+                    log("输入的内容 $val");
+                  },),
                   Expanded(
                     child: SmartRefresher(
                       controller: _refreshController,
@@ -103,6 +124,17 @@ class _CustomerPageState extends BaseStatefulState<CustomerPage>
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
+                            CustomerListItem(title: 'Chris Neb',mobileNum: '+63 09773674300',click: (){},),
                           ],
                         ),
                       ),

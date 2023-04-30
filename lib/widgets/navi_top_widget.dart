@@ -5,7 +5,9 @@ import 'package:yy_new/widgets/navi_back_item.dart';
 class NaviTop extends StatefulWidget {
   final String? title;
   final Widget? right;
-  const NaviTop({super.key, this.title,this.right});
+  final double? height;
+
+  const NaviTop({super.key, this.title,this.right,this.height});
 
   @override
   State<StatefulWidget> createState() {
@@ -17,9 +19,9 @@ class _NaviTopState extends State<NaviTop>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).viewPadding.top + 44,
+      height: MediaQuery.of(context).viewPadding.top + 44 + (widget.height??0),
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top+ (widget.height??0)),
       color: Colors.yellow,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
