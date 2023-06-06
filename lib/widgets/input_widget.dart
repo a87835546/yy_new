@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 class InputWidget extends StatefulWidget {
   final TextEditingController? controller;
   final String placeholder;
-
-  const InputWidget({super.key,this.controller,required this.placeholder});
+  final bool? showPlaceholder;
+  const InputWidget({super.key,this.controller,required this.placeholder,this.showPlaceholder});
 
   @override
   State<StatefulWidget> createState() {
@@ -18,7 +18,7 @@ class _InputWidgetState extends State<InputWidget>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30,
+      height: 40,
       child: TextField(
         cursorColor: const Color(0xffC1C2C4),
         controller: widget.controller,
@@ -28,8 +28,7 @@ class _InputWidgetState extends State<InputWidget>{
           fontSize: 12,
         ),
         decoration: InputDecoration(
-
-            labelText: widget.placeholder,
+            labelText:widget.showPlaceholder == false? "":widget.placeholder,
             labelStyle: const TextStyle(color: Color(0xff707070)),
             border: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.greenAccent, width: 1),
@@ -37,6 +36,7 @@ class _InputWidgetState extends State<InputWidget>{
             ),
             // border: InputBorder.none,
             hintText: widget.placeholder,
+            prefixIcon: widget.showPlaceholder == false?const Icon(Icons.search):null,
             hintStyle: const TextStyle(color: Color(0xffC1C2C4)),
             contentPadding: const EdgeInsets.only(left: 20, bottom: 10)),
         onChanged: (value) {

@@ -47,7 +47,9 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   dotted_border: ^2.0.0+3
   proste_indexed_stack: ^0.2.4
-  package_info_plus: ^3.1.0
+  fluttertoast: ^8.0.7
+  package_info_plus: ^3.1.2
+  device_info_plus: ^8.2.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

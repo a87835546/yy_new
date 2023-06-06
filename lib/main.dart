@@ -20,7 +20,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AppSingleton.devMode = DevMode.product;
+  AppSingleton.devMode = DevMode.local;
   TLSizeFit.initialize();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => UserLoginProviderModel()),
@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: ResiklosColors.background,
               ),
               home:
-                  login == false ?
+                  login == true ?
               const CustomBottomNavigationBar():
               const SignInPage(),
               builder: EasyLoading.init(),
@@ -137,6 +137,9 @@ class UserInfoModel {
   String? email;
   dynamic token;
   String? inviteCode;
+  dynamic subDate;
+  dynamic subExpiryDate;
+  dynamic ip;
   UserInfoModel(
       {this.id = 0,
         this.avatar,
@@ -147,16 +150,21 @@ class UserInfoModel {
         this.email,
         this.token,
         this.inviteCode,
+        this.subDate,
+        this.subExpiryDate,
+        this.ip
       });
   Map<String, dynamic> toJson() {
     Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['gender'] = gender;
-    data['mobile'] = mobile;
+    data['phone_num'] = mobile;
     data['email'] = email;
     data['token'] = token;
-    data['nickName'] = nickName;
+    data['username'] = nickName;
     data['invite_code'] = inviteCode;
+    data['sub_date'] = subDate;
+    data['sub_expiry_date'] = subExpiryDate;
     return data;
   }
   factory UserInfoModel.fromJson(Map<String, dynamic> json) {
@@ -164,13 +172,17 @@ class UserInfoModel {
 
     UserInfoModel model = UserInfoModel(
       id: json['id'],
+      ip: json['ip'],
       email: json['email'],
       token: json['token'],
-      nickName: json['nickName'],
+      nickName: json['username'],
       avatar: json['avatar'],
       gender: json['gender'],
-      mobile: json['mobile'],
+      mobile: json['phone_num'],
       inviteCode: json['invite_code'],
+      subDate: json['sub_date'],
+      subExpiryDate: json['sub_expiry_date'],
+      registerTime: json['created_at'],
     );
     return model;
   }

@@ -5,7 +5,8 @@ class SubscriptionItemWidget extends StatefulWidget {
   final int index;
   final double? height;
   final Function(int)? click;
-  const SubscriptionItemWidget({super.key,required  this.index,this.height,this.click});
+  final bool? show;
+  const SubscriptionItemWidget({super.key,required  this.index,this.height,this.click,this.show});
 
   @override
   State<StatefulWidget> createState() {
@@ -46,7 +47,7 @@ class _SubscriptionItemWidgetState extends State<SubscriptionItemWidget>{
               Expanded(flex: 1,child:  Column(
                 children: [
                   Container(height: 30,child: const Text('599',style: TextStyle(fontSize: 16,color: Colors.black87),),),
-                  GestureDetector(
+                  Visibility(child: GestureDetector(
                     onTap: (){
                       if (widget.click != null){
                         widget.click!(widget.index);
@@ -59,7 +60,7 @@ class _SubscriptionItemWidgetState extends State<SubscriptionItemWidget>{
                           borderRadius: BorderRadius.circular(3),
                           border: Border.all(color: Colors.black12)),child:
                     const Text('Purchase',style: TextStyle(fontSize: 16,color: Colors.black87),),),
-                  )
+                  ),visible: widget.show??true,)
                 ],
               ),),
             ],

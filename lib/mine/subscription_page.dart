@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:yy_new/base_class/base_page.dart';
+import 'package:yy_new/mine/subscription_history_page.dart';
 import 'package:yy_new/mine/subscription_info_page.dart';
 import 'package:yy_new/mine/subscription_item_widget.dart';
+import 'package:yy_new/utils/app_singleton.dart';
 import 'package:yy_new/utils/navigator_util.dart';
 import 'package:yy_new/widgets/navi_top_widget.dart';
 
@@ -34,19 +36,21 @@ class _SubscriptionPageState extends BaseStatefulState<SubscriptionPage> {
     return Scaffold(
       body: Column(
         children: [
-          NaviTop(),
+          NaviTop(right: GestureDetector(child: Container(child: Icon(Icons.history),padding: EdgeInsets.only(right: 10),),onTap: (){
+            NavigatorUtil.push(context, SubscriptionHistoryPage());
+          },),),
           Container(
-            padding: EdgeInsets.only(left: 15,right: 15,top: 20),
+            padding: const EdgeInsets.only(left: 15,right: 15,top: 20),
             child: Row(
               children: [
-                Container(child: Image.asset("imgs/default_avatar.png",width: 30,height: 30,),width: 60,height: 60,),
-                SizedBox(width: 10,),
+                SizedBox(width: 60,height: 60,child: Image.asset("imgs/default_avatar.png",width: 30,height: 30,),),
+                const SizedBox(width: 10,),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(height: 30,child: const Text('Current Subscription',style: TextStyle(fontSize: 16,color: Colors.black87),),),
-                    Container(child: const Text('Expires on 05/24/2023 12:30 PM'),),
+                    const SizedBox(height: 30,child: Text('Current Subscription',style: TextStyle(fontSize: 16,color: Colors.black87),),),
+                    Container(child:  Text('Expires on' +'${AppSingleton.userInfoModel?.subExpiryDate}'+'05/24/2023 12:30 PM'),),
                   ],
                 ),
               Expanded(flex: 1,

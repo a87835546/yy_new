@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:yy_new/utils/navigator_util.dart';
 
 class NaviBackButton extends StatefulWidget{
-  const NaviBackButton({super.key});
+  final String? title;
+  const NaviBackButton({super.key, this.title});
 
   @override
   State<StatefulWidget> createState() {
@@ -18,14 +19,15 @@ class _NaviBackButtonState extends State<NaviBackButton> {
       onTap: (){
         NavigatorUtil.pop(context);
       },
+      behavior: HitTestBehavior.opaque,
       child: Container(
         height: 44,
-        width: 50,
+        // width: 50,
         color: Colors.transparent,
         child: Row(
           children: [
-            Container(child: Icon(Icons.arrow_back_ios_outlined,size: 20,),),
-            Container(child: Text("back")),
+            Container(child: const Icon(Icons.arrow_back_ios_outlined,size: 20,),),
+            Container(child: Text(widget.title?? "back")),
           ],
         ),
       ),

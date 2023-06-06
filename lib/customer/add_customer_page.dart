@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:yy_new/base_class/base_page.dart';
@@ -16,14 +18,11 @@ class AddCustomerPage extends BaseStatefulWidget {
 }
 
 class _AddCustomerPageState extends BaseStatefulState<AddCustomerPage>{
-  @override
-  void initState() {
-    super.initState();
-  }
+  String select = '1';
+
   @override
   Widget build(BuildContext context) {
     List<String> list = ['1','2','3'];
-
     return Scaffold(
       body: Column(
         children: [
@@ -52,13 +51,13 @@ class _AddCustomerPageState extends BaseStatefulState<AddCustomerPage>{
                   padding: EdgeInsets.only(left: 00,top: 20,bottom: 5),
                   alignment: Alignment.centerLeft,
                   child: const Text('Name *',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w300),),),
-                Padding(padding: EdgeInsets.only(left: 20,right: 20),child: InputWidget(placeholder: '123',),),
+                Padding(padding: EdgeInsets.only(left: 20,right: 20),child: InputWidget(placeholder: 'Customer Name',),),
 
                 Container(
                   padding: EdgeInsets.only(left: 00,top: 20,bottom: 5),
                   alignment: Alignment.centerLeft,
                   child: const Text('Mobile Number',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w300),),),
-                Padding(padding: EdgeInsets.only(left: 20,right: 20),child: InputWidget(placeholder: '123',),),
+                Padding(padding: EdgeInsets.only(left: 20,right: 20),child: InputWidget(placeholder: 'Mobile Number',),),
 
                 Container(
                   padding: EdgeInsets.only(left: 00,top: 20,bottom: 5),
@@ -66,13 +65,17 @@ class _AddCustomerPageState extends BaseStatefulState<AddCustomerPage>{
                   child: const Text('Type',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w300),),),
                 Padding(padding: EdgeInsets.only(left: 20,right: 20),child: Container(height: 40,child: DropdownButtonFormField(
                   isExpanded: true,
-                  decoration: const InputDecoration(
+
+                  decoration:  InputDecoration(
                       border: OutlineInputBorder(), labelText: 'Type'),
                   // 设置默认值
-                  value: '1',
+                  value: '$select',
                   // 选择回调
                   onChanged: (String? newPosition) {
-                    setState(() {});
+                    setState(() {
+                      select = newPosition??select;
+                    });
+                    log('new $newPosition');
                   },
                   // 传入可选的数组
                   items: list.map((String sex) {

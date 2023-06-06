@@ -27,6 +27,7 @@ class AppSingleton {
   static RememberMeModel? rememberMeModel;
   static SharedPreferences? _preference;
   static DevMode? devMode;
+  static double? height;
 
   //提供了一个工厂方法来获取该类的实例
   factory AppSingleton() => getInstance();

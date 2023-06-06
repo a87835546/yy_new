@@ -31,7 +31,7 @@ class HttpManager {
 
   static String baseUrl = _debug
       ? (AppSingleton.devMode == DevMode.local
-          ? "https://192.168.1.16:9001/api/v1/"
+          ? "http://127.0.0.1:8081/v1/"
           : (AppSingleton.devMode == DevMode.staging
               ? "https://staging.resiklos.app/api/v1/"
               : "https://api.resiklos.app/api/v1/"))
@@ -110,6 +110,7 @@ class HttpManager {
     headers.putIfAbsent("token", () => _token);
     Options options = Options(headers: headers, sendTimeout: const Duration(seconds: timeout));
     log("post request params $params");
+    log("post request url $baseUrl$url");
     log("post request headers $headers");
     CancelToken token = CancelToken();
     _tokens.add(token);

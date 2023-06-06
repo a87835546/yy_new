@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:yy_new/base_class/base_page.dart';
+import 'package:yy_new/mine/staff_management_page.dart';
+import 'package:yy_new/utils/navigator_util.dart';
 import 'package:yy_new/widgets/navi_top_widget.dart';
 
 import '../widgets/store_management_button.dart';
@@ -18,6 +20,8 @@ class StoreManagementPage extends BaseStatefulWidget {
 class _StoreManagementPageState extends BaseStatefulState<StoreManagementPage> {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).padding.top;
+
     return Scaffold(
       body: Column(
         children: [
@@ -30,7 +34,9 @@ class _StoreManagementPageState extends BaseStatefulState<StoreManagementPage> {
           const SizedBox(height: 40,),
           StoreManagementButton(title: 'Suppliers',desc: 'Add your suppliers and service providers to track all store expenses',click: (){},),
           StoreManagementButton(title: 'Products & Pricing',desc: 'Manage all store products and set its default price to ease calculations',click: (){},),
-          StoreManagementButton(title: 'Staff Management',desc: 'View all your staff list and information. Manage and monitor compensations',click: (){},),
+          StoreManagementButton(title: 'Staff Management',desc: 'View all your staff list and information. Manage and monitor compensations',click: (){
+            NavigatorUtil.push(context, StaffManagementPage(height: height,));
+          },),
         ],
       ),
     );

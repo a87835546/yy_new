@@ -13,6 +13,7 @@ import 'package:yy_new/sign_up_in/sign_reset_password_page.dart';
 import 'package:yy_new/sign_up_in/sign_social_widget.dart';
 import 'package:yy_new/sign_up_in/sign_up.dart';
 import 'package:yy_new/sign_up_in/sign_up_input_widget.dart';
+import '../bottom_navigationbar.dart';
 import '../utils/cache.dart';
 import '../utils/http_manager.dart';
 import '../utils/navigator_util.dart';
@@ -236,18 +237,20 @@ class SignInPageState extends State<SignInPage> {
                                   "please,input correct email address");
                             } else if (passwordController.text.length < 6) {
                               showErrorText("please,input correct password");
-                            } else {
-                              updateSaveEmail();
-                              // var model = await SignRequest.login(
-                              //     emailController.text,
-                              //     passwordController.text);
-                              // if (null != model) {
-                              //   Navigator.of(context).pushAndRemoveUntil(
-                              //       MaterialPageRoute(builder: (_) {
-                              //     return Container();
-                              //   }), (route) => false);
-                              // }
                             }
+                            // } else {
+                              updateSaveEmail();
+                              var model = await SignRequest.login(
+                                  emailController.text,
+                                  passwordController.text);
+                              log('model--->> $model');
+                              if (null != model) {
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(builder: (_) {
+                                  return CustomBottomNavigationBar();
+                                }), (route) => false);
+                              }
+                            // }
                           }),
                       Padding(
                         padding: EdgeInsets.only(top: 20),
@@ -322,7 +325,7 @@ class SignInPageState extends State<SignInPage> {
           passwordController.clear();
         }
       });
-      log("loading  email:$username and pwd $password ");
+      log("TransactionDetailPage:$username and pwd $password ");
     } catch (e) {
       log("load user email is error $e");
     }

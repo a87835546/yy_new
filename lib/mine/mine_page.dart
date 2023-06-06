@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../base_class/base_page.dart';
+import '../sign_up_in/sign_request.dart';
 import '../utils/app_singleton.dart';
 import '../utils/clip_borad_tool.dart';
 import '../utils/color.dart';
@@ -40,7 +41,7 @@ class _MinePageState extends BaseStatefulState<MinePage>
             ),
             GestureDetector(
               onTap: () {
-                // SignRequest.logout(context);
+                SignRequest.logout(context);
               },
               behavior: HitTestBehavior.opaque,
               child: Container(

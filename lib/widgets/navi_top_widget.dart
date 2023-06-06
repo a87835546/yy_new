@@ -4,10 +4,11 @@ import 'package:yy_new/widgets/navi_back_item.dart';
 
 class NaviTop extends StatefulWidget {
   final String? title;
+  final String? backTitle;
   final Widget? right;
   final double? height;
 
-  const NaviTop({super.key, this.title,this.right,this.height});
+  const NaviTop({super.key, this.title,this.right,this.height,this.backTitle});
 
   @override
   State<StatefulWidget> createState() {
@@ -27,7 +28,7 @@ class _NaviTopState extends State<NaviTop>{
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const NaviBackButton(),
+          NaviBackButton(title: widget.backTitle,),
           Expanded(flex: 1,child: Container(height: 44,color: Colors.transparent,alignment: Alignment.center,child: Text(widget.title??"",style: TextStyle(color: Colors.black),),)),
           widget.right?? const SizedBox(width: 50,)
         ],

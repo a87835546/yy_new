@@ -7,6 +7,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:yy_new/mine/account_item.dart';
 import 'package:yy_new/sign_up_in/sign_modify_password_page.dart';
 import 'package:yy_new/utils/navigator_util.dart';
+import 'package:yy_new/widgets/navi_top_widget.dart';
 
 import '../main.dart';
 import '../utils/app_singleton.dart';
@@ -45,6 +46,7 @@ class _AccountPageState extends State<AccountPage>
     return Scaffold(
         body: Column(
       children: [
+        NaviTop(),
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(vertical: 20),
@@ -75,13 +77,12 @@ class _AccountPageState extends State<AccountPage>
                   log("click change password");
                   NavigatorUtil.push(context, const SignModifyPasswordPage());
                 },),
-                AccountItem(title: "Mobile Number",subTitle: '6309773674305',click: (){
+                AccountItem(title: "Mobile Number",subTitle: _model?.mobile??'6309773674305',click: (){
                   log("click change password");
                 },),
-                AccountItem(title: "Change Email",subTitle: 'aa@aa.com',click: (){
+                AccountItem(title: "Change Email",subTitle: _model?.email??'aa@aa.com',click: (){
                   log("click change password");
-
-                  NavigatorUtil.push(context,  const ChangeEmail(email: "aa@aa.com",));
+                  NavigatorUtil.push(context,  ChangeEmail(email: _model?.email??"aa@aa.com",));
                 },),
                 Container(
                   padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
@@ -123,7 +124,7 @@ class _AccountPageState extends State<AccountPage>
 
   Future getUser() async {
     var r = await HttpManager.get(
-        url: "user/getInfo", params: {"userId": "${_model?.email}"});
+        url: "user/getInfo", params: {"userId": "${_model?.id}"});
     log("user info res ------>>>>$r");
     if (mounted && r["data"] != null) {
       var temp = r["data"];

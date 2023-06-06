@@ -47,6 +47,7 @@ class CustomBottomNavigationBarState
 
   @override
   void initState() {
+
     super.initState();
     _streamSubscription = EventBusUtil.listen((event) {
       log("init page event listen -----------?>>>>>>>>>>> $event");
@@ -67,6 +68,8 @@ class CustomBottomNavigationBarState
   @override
   Widget build(BuildContext context) {
     // AppSingleton.state = this;
+    AppSingleton.height = MediaQuery.of(context).viewPadding.top;
+
     return WillPopScope(
         child: Scaffold(
           resizeToAvoidBottomInset: false,

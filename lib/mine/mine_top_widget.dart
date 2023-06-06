@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yy_new/mine/subscription_page.dart';
+import 'package:yy_new/utils/app_singleton.dart';
 import 'package:yy_new/utils/navigator_util.dart';
 
 import '../widgets/base_top_widget.dart';
@@ -34,7 +35,7 @@ class _MineTopWidgetState extends State<MineTopWidget>{
       child: Column(
         children: [
           BaseTopWidget(title: 'MENU',clickOne: (){NavigatorUtil.push(context, AccountProfilePage());},clickTwo: (){NavigatorUtil.push(context, AccountPage());},),
-          Container(height: 80,child: MineTopSubscriptionWidget(title: 'John Uncle', subtitle: 'Chris Neb',click: (){
+          Container(height: 80,child: MineTopSubscriptionWidget(title: 'John Uncle', subtitle: AppSingleton.userInfoModel?.nickName?? 'Chris Neb',click: (){
             NavigatorUtil.push(context, AccountProfilePage());
 
           },),),
@@ -46,14 +47,14 @@ class _MineTopWidgetState extends State<MineTopWidget>{
             child: MineTopSubscriptionWidget(title: 'Subscription', subtitle: title,right: GestureDetector(
               onTap: (){
                 log('click extend or buy');
-                NavigatorUtil.push(context, SubscriptionPage());
+                NavigatorUtil.push(context, const SubscriptionPage());
               },
               child: Container(
                 width: 80,
                 height: 30,
                 alignment: Alignment.center,
-                decoration: BoxDecoration(border: Border.all(color: Colors.black12),borderRadius: BorderRadius.all(Radius.circular(2))),
-                child: Text('Extend/Buy'),
+                decoration: BoxDecoration(border: Border.all(color: Colors.black12),borderRadius: const BorderRadius.all(Radius.circular(2))),
+                child: const Text('Extend/Buy'),
               ),
             ),),
           ),
